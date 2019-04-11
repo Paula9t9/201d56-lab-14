@@ -41,7 +41,7 @@ function addSelectedItemToCart() {
   console.log(event.target.quantity.value);
   // TODO: get the quantity
   // TODO: using those, add one item to the Cart
-  Cart.addItem(event.target.items.value, event.target.quantity.value);
+  cart.addItem(event.target.items.value, event.target.quantity.value);
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
