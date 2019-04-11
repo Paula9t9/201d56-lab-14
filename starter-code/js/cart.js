@@ -18,23 +18,34 @@ function renderCart() {
   showCart();
 }
 
-// TODO: Remove all of the rows (tr) in the cart table (tbody)
-function clearCart() {}
+function clearCart() {
+  
+  let tableDoc = document.getElementById('cart');
+  console.log(table.rows.length);
+  tableDoc.deleteRow(table.rows.length-1);
+}
 
-// TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
 
-  // TODO: Find the table body
   let tableDoc = document.getElementById('cart');
-  // TODO: Iterate over the items in the cart
+
   for (let i in cart.items.items) {
-  // TODO: Create a TR
+  
   let trEl = document.createElement('tr')
-  // TODO: Create a TD for the delete link, quantity,  and the item
+  
   let tdElLink = document.createElement('td');
   let tdElQuant = document.createElement('td');
   let tdElItem = document.createElement('td');
-    tdElLink.textContent = 'X'
+
+    //Used Stackoverflow to figure our a tag https://stackoverflow.com/questions/5519747/how-to-add-anchor-tags-dynamically-to-a-div-in-javascript
+    // And this: https://stackoverflow.com/questions/40843494/call-javascript-function-from-anchor-html-tag 
+  // let aEl = document.createElement('a');
+    // aEl.setAttribute('href',"javascript:removeItemFromCart");
+  
+    tdElLink.textContent = 'X';
+    tdElLink.id = i;
+    console.log(i);
+
     trEl.appendChild(tdElLink);
     tdElItem.textContent = cart.items.items[i].product;
     console.log(cart.items.items[i].quantity + " Hello Cart Js " + cart.items.items[i].product)
@@ -42,19 +53,24 @@ function showCart() {
     tdElQuant.textContent = cart.items.items[i].quantity;
     trEl.appendChild(tdElQuant);
 
-
-
-
-  // TODO: Add the TR to the TBODY and each of the TD's to the TR
   tableDoc.appendChild(trEl);
   }
 }
 
 function removeItemFromCart(event) {
 
+  console.log("Removed an item! (NOT XP)")
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
+  console.log(event.target.id);
+  // delete cart.items.items[event.target.id];
+  cart.items.items.slice(event.target.id)
+  console.log(event.target);
+
   // TODO: Save the cart back to local storage
+  cart.saveToLocalStorage();
+
   // TODO: Re-draw the cart table
+  renderCart();
 
 }
 
