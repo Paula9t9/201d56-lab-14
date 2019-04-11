@@ -18,7 +18,12 @@ function renderCart() {
   showCart();
 }
 
-function clearCart() {}
+function clearCart() {
+  
+  let tableDoc = document.getElementById('cart');
+  console.log(table.rows.length);
+  tableDoc.deleteRow(table.rows.length-1);
+}
 
 function showCart() {
 
@@ -57,14 +62,14 @@ function removeItemFromCart(event) {
   console.log("Removed an item! (NOT XP)")
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
   console.log(cart.items.items[event.target.id].product);
-  delete cart.items.items[event.target.id];
+  // delete cart.items.items[event.target.id];
+  cart.items.items.slice(event.target.id)
 
   // TODO: Save the cart back to local storage
   cart.saveToLocalStorage();
 
   // TODO: Re-draw the cart table
-  clearCart();
-  showCart();
+  renderCart();
 
 }
 
