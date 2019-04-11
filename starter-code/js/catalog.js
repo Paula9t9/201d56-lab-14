@@ -31,7 +31,6 @@ function handleSubmit(event) {
   cart.saveToLocalStorage();
   updateCounter();
   updateCartPreview();
-  console.log(catalogForm.value);
 }
 
 // Done: Add the selected item and quantity to the cart
@@ -46,7 +45,6 @@ function addSelectedItemToCart() {
 function updateCounter() {
   let cartLi = document.getElementById('itemCount');
   cartLi.textContent = cart.items.length;
-  console.log(cart.items.length + ' Hello');
 }
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
@@ -60,7 +58,6 @@ function updateCartPreview() {
 // Call that handleSubmit method above and kick off the whole process
 var catalogForm = document.getElementById('catalog');
 catalogForm.addEventListener('submit', handleSubmit);
-console.log(catalogForm.value);
 
 // Before anything else of value can happen, we need to fill in the select
 // drop down list in the form.

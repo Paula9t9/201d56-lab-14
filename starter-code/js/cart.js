@@ -39,12 +39,12 @@ function showCart() {
 
     //Used Stackoverflow to figure our a tag https://stackoverflow.com/questions/5519747/how-to-add-anchor-tags-dynamically-to-a-div-in-javascript
     // And this: https://stackoverflow.com/questions/40843494/call-javascript-function-from-anchor-html-tag 
-  let aEl = document.createElement('a');
-    aEl.setAttribute('href',"javascript:removeItemFromCart");
-    aEl.innerHTML = "X";
-    tdElLink.appendChild(aEl);
-    aEl.id = i;
-
+  // let aEl = document.createElement('a');
+    // aEl.setAttribute('href',"javascript:removeItemFromCart");
+  
+    tdElLink.textContent = 'X';
+    tdElLink.id = i;
+    console.log(i);
 
     trEl.appendChild(tdElLink);
     tdElItem.textContent = cart.items.items[i].product;
@@ -61,9 +61,10 @@ function removeItemFromCart(event) {
 
   console.log("Removed an item! (NOT XP)")
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
-  console.log(cart.items.items[event.target.id].product);
+  console.log(event.target.id);
   // delete cart.items.items[event.target.id];
   cart.items.items.slice(event.target.id)
+  console.log(event.target);
 
   // TODO: Save the cart back to local storage
   cart.saveToLocalStorage();
